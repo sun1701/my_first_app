@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App Fritz</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-image: url(images/Fitz\ -\ Fresh\ Air\ Workout.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        font-family: Roboto Condensed, sans-serif;
+        background-color: #bedaff;
+      }
+
+      .fritz-app {
+        border: 1px solid #c9cdd1;
+        padding: 15px;
+        margin: 20px auto;
+        border-radius: 10px;
+        max-width: 700px;
+        background-color: rgba(213, 229, 245, 0.5);
+      }
+
+      h1,
+      h2 {
+        margin: 10px auto;
+        padding: 5px;
+      }
+
+      li {
+        color: lightslategrey;
+        line-height: 1;
+        list-style: none;
+        padding: 5px;
+        margin: 0;
+      }
+
+      ul {
+        padding: 0 0 0 0;
+      }
+
+      .temperature {
+        color: rgb(33, 33, 33);
+        font-size: 64px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .search-cities {
+        list-style: none;
+      }
+      .search-cities > li {
+        display: inline-block;
+        margin: 0px 10px 0px 0px;
+        color: lightslategrey;
+      }
+
+      .card {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .card-group {
+        background-color: rgba(255, 255, 255, 0.3);
+        max-width: 700px;
+        padding: 15px;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="fritz-app">
+        <h1>Weather App <strong>Fritz</strong></h1>
+        <form class="search-form" id="search-form">
+          <div class="row">
+            <div class="col-6">
+              <input
+                type="search"
+                placeholder="Type a city.."
+                autofocus="on"
+                autocomplete="off"
+                id="search-input"
+                class="form-control shadow-sm"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm w-100"
+              />
+            </div>
+            <div class="col-3">
+              <button
+                class="btn btn-success w-100"
+                id="current-location-button"
+              >
+                Current
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="row justify-content-center align-items-center">
+          <div class="col-5">
+            <h2 id="city">City</h2>
+            <ul>
+              <li id="date">Thursday, April 4, 2021</li>
+              <li id="sky">Cloudy</li>
+            </ul>
+          </div>
+
+          <div class="col-4">
+            <div class="clearfix">
+              <div>
+                <span class="temperature" id="temperature">Temp</span
+                ><span class="units">°C</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+              <div></div>
+            <ul>
+              <li>Humidity: <span id="humidity">66</span>%</li>
+              <li>Wind: <span id="wind">4</span> km/h</li>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-group gy-4">
+        <div class="card p-2">
+          <div class="card-body">
+            <h5 class="card-title">DI</h5>
+            <p class="card-text">
+              <small class="text-muted">31.08.</small>
+            </p>
+            <figure class="figure-img img-fluid rounded">
+              <img
+                src="images/undraw_Raining_re_4b55.svg"
+                class="img-thumbnail"
+                alt=""
+              />
+              <figcaption class="figure-caption text-center">
+                Raining
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card-footer">
+            <medium class="text-muted">18 &deg;</medium>
+          </div>
+        </div>
+        <div class="card p-2">
+          <div class="card-body">
+            <h5 class="card-title">Mi</h5>
+            <!-- <p class="card-text">
+                  This card has supporting text below as a natural lead-in to
+                  additional content.
+                </p> -->
+            <p class="card-text">
+              <small class="text-muted">01.09.</small>
+            </p>
+            <figure class="figure-img img-fluid rounded">
+              <img
+                src="images/undraw_after_the_rain_58op.svg"
+                class="img-thumbnail"
+                alt=""
+              />
+              <figcaption class="figure-caption text-center">
+                After the rain.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">16 &deg; and windy</small>
+          </div>
+        </div>
+        <div class="card p-2">
+          <div class="card-body">
+            <h5 class="card-title">Do</h5>
+
+            <p class="card-text">
+              <small class="text-muted">02.09.</small>
+            </p>
+            <figure class="figure-img img-fluid rounded">
+              <img
+                src="images/undraw_sunlight_tn7t.svg"
+                class="img-thumbnail"
+                alt=""
+              />
+              <figcaption class="figure-caption text-center">
+                Sunny day
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">23 &deg; and sunny</small>
+          </div>
+        </div>
+        <div class="card p-2">
+          <div class="card-body">
+            <h5 class="card-title">Fr</h5>
+            <p class="card-text">
+              <small class="text-muted">03.09.</small>
+            </p>
+            <figure class="figure-img img-fluid rounded">
+              <img
+                src="images/undraw_air_support_wy1q.svg"
+                class="img-thumbnail"
+                alt=""
+              />
+              <figcaption class="figure-caption text-center">
+                Air support
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">23 &deg; and windy</small>
+          </div>
+        </div>
+        <div class="card p-2">
+          <div class="card-body">
+            <h5 class="card-title">Sa</h5>
+            <p class="card-text">
+              <small class="text-muted">04.09.</small>
+            </p>
+            <figure class="figure-img img-fluid rounded">
+              <img
+                src="images/undraw_Walking_outside_re_56xo.svg"
+                class="img-thumbnail"
+                alt=""
+              />
+              <figcaption class="figure-caption text-center">
+                Walking outside
+              </figcaption>
+            </figure>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">21 &deg; and calm</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/script.js"></script>
+  </body>
+</html>
