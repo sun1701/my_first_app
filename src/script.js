@@ -17,7 +17,7 @@ function searchCity(event) {
 
 // function showNewCity(cityname) {}
 
-let form = document.querySelector("#search-form");
+let form = document.querySelector("#search-form"); //globale Variable - ist in Funktionen aufrufbar
 console.log("form");
 
 form.addEventListener("submit", searchCity);
@@ -42,6 +42,9 @@ function showInformation(response) {
   let newcityElement = document.querySelector("#city");
   let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#sky");
+
+  celsiusTemperature = response.data.main.temp; //Temperatur wir aufbewahrt
+
   temperatureElement.innerHTML = `${temperature}`;
   humidityElement.innerHTML = `${humidity}`;
   windElement.innerHTML = `${wind}`;
@@ -120,3 +123,26 @@ let currentDate = li.innerHTML;
 function formatDate(currentDate) {
   return now;
 }
+
+// Convert Units
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link"); //globale Variable - ist in Funktionen aufrufbar
+
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+let celsiusTemperature = null;
