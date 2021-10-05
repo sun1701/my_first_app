@@ -32,6 +32,7 @@ function showInformation(response) {
   console.log(response.data.wind.speed); //Windgeschwindigkeit
   console.log(response.data.name); //gesuchter Ort
   console.log(response.data.weather[0].description); //Beschreibung
+  console.log(response.data.weather[0].icon); //Weather icon
   let temperature = Math.round(response.data.main.temp); //neue Variable mit gerundeter Temperatur
   let temperatureElement = document.querySelector("#temperature");
   let humidity = response.data.main.humidity;
@@ -42,6 +43,8 @@ function showInformation(response) {
   let newcityElement = document.querySelector("#city");
   let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#sky");
+  let iconElement = document.querySelector("#icon");
+  let newicon = response.data.weather[0].icon;
 
   celsiusTemperature = response.data.main.temp; //Temperatur wir aufbewahrt
 
@@ -50,6 +53,10 @@ function showInformation(response) {
   windElement.innerHTML = `${wind}`;
   newcityElement.innerHTML = `${newcity}`;
   descriptionElement.innerHTML = `${description}`;
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${newicon}@2x.png`
+  );
 }
 
 // get current Location and show information
@@ -151,3 +158,6 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 let celsiusTemperature = null;
+
+let weathericon = document.querySelector("#icon-container");
+console.log(weathericon);
