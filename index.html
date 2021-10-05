@@ -52,12 +52,12 @@
     
 
       li {
-        color: lightslategrey;
+        color: rgb(32, 47, 61);
         line-height: 1;
         list-style: none;
         padding: 5px;
         margin: 0;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
       }
 
       ul {
@@ -169,37 +169,33 @@
         </form>
         <div class="row justify-content-center align-items-center">
           <div class="col-4">
-            <h2 id="city">City</h2>
+            <h2 id="city">Fakecity</h2>
             <ul>
               <li id="date">Thursday, April 4, 2021</li>
               <li id="sky">Cloudy</li>
+              <li>Humidity: <span id="humidity">66</span>%</li>
+              <li>Wind: <span id="wind">4</span> km/h</li>
             </ul>
           </div>
-          <div class="col-2">
+          <div class="col-3">
             <div class="icon-container">
                 <img src="http://openweathermap.org/img/wn/10d@2x.png" id="icon">
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-5">
             <div class="clearfix">
               <div>
-                <span class="temperature" id="temperature">Temp</span
+                <span class="temperature" id="temperature">12</span
                 ><span class="units"><a href="#" id="celsius-link" class="active">°C</a> / <a href="#" id="fahrenheit-link">°F</a></span>
               </div>
             </div>
           </div>
-          <div class="col-2">
-              <div></div>
-            <ul>
-              <li>Humidity: <span id="humidity">66</span>%</li>
-              <li>Wind: <span id="wind">4</span> km/h</li>
-              
-            </ul>
-            </div>
+         
           </div>
         </div>
       </div>
+      
       <div class="card-group gy-4">
         <div class="card p-2">
           <div class="card-body">
@@ -306,6 +302,8 @@
       <div class="github">
          find on <a href="https://github.com/sun1701/my_first_app"> <i class="fa fa-github fa-lg" aria-hidden="true"></i> github</a>
       </div>
+    
+      
      
 
     </div>
