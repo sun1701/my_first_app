@@ -65,12 +65,26 @@
         color: lightslategrey;
       }
 
-      a:hover{
+      /* a:hover{
         color:rgb(117, 137, 175);
-      }
+      } */
 
       a:visited{
         color: darkgrey
+      }
+
+      .clearfix .active{
+        color:black;
+        cursor: default;
+        text-decoration: none
+      }
+
+      .clearfix .active:hover{
+        text-decoration: none;
+      }
+
+       .clearfix .active:hover{
+        text-decoration: none;
       }
 
       .temperature {
@@ -156,7 +170,7 @@
             <div class="clearfix">
               <div>
                 <span class="temperature" id="temperature">Temp</span
-                ><span class="units"><a href="#" id="celsius-link">°C</a> / <a href="#" id="fahrenheit-link">°F</a></span>
+                ><span class="units"><a href="#" id="celsius-link" class="active">°C</a> / <a href="#" id="fahrenheit-link">°F</a></span>
               </div>
             </div>
           </div>
