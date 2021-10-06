@@ -161,3 +161,14 @@ let celsiusTemperature = null;
 
 let weathericon = document.querySelector("#icon-container");
 console.log(weathericon);
+
+// Forecast
+
+let cityname = "Wuppertal";
+
+function showForcast(response) {
+  console.log(response.data);
+}
+
+let apiForcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}`;
+axios.get(`${apiForcastURL}&appid=${apiKey}`).then(showForcast);

@@ -34,10 +34,12 @@
     <style>
       body {
         background-image: url(images/Fitz\ -\ Fresh\ Air\ Workout.png);
+        background-position: center;
         background-repeat: no-repeat;
         background-position: right;
         font-family: Roboto Condensed, sans-serif;
         background-color: #bedaff;
+     
       }
 
       .fritz-app {
@@ -50,8 +52,9 @@
       }
 
       .appname{
-        font-family: Lobster, cursive ;
+        /* font-family: Lobster, cursive ; */
         color: #4c5a80;
+        font-weight: bold;
 
       }
 
@@ -165,19 +168,19 @@
                 autofocus="on"
                 autocomplete="off"
                 id="search-input"
-                class="form-control shadow-sm"
+                class="form-control"
               />
             </div>
             <div class="col-3">
               <input
                 type="submit"
                 value="Search"
-                class="form-control btn btn-primary shadow-sm w-100"
+                class="form-control btn btn-outline-secondary w-100"
               />
             </div>
             <div class="col-3">
               <button
-                class="btn btn-success w-100"
+                class="btn btn-outline-success w-100"
                 id="current-location-button"
               >
                 Current
@@ -217,7 +220,7 @@
       <div class="card-group gy-4">
         <div class="card p-2">
           <div class="card-body">
-            <h5 class="card-title">DI</h5>
+            <h5 class="card-title" id="week-day">DI</h5>
             
             <figure class="figure-img img-fluid rounded">
               <img
