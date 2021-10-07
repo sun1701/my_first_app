@@ -11,7 +11,7 @@ function searchCity(event) {
   console.log("input.value");
   let city = document.querySelector("#city");
   city.innerHTML = `${input.value}`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric&lang=de`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(showInformation);
 }
 
@@ -27,7 +27,7 @@ function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "842b36d55cb28eba74a018029d56b04c";
   let units = `metric`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}&lang=de`;
   // console.log(apiUrl);
   axios.get(apiUrl).then(displayForecast);
 }
@@ -83,7 +83,7 @@ function getCurrentTemp(position) {
   let lon = position.coords.longitude;
   let lat = position.coords.latitude;
   let units = `metric`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}&lang=de`;
 
   https: axios.get(apiUrl).then(showInformation);
 }
@@ -103,30 +103,30 @@ let minute = now.getMinutes();
 let seconds = now.getSeconds();
 
 let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
+  "Sonntag",
+  "Montag",
+  "Dienstag",
+  "Mittwoch",
+  "Donnerstag",
+  "Freitag",
+  "Samstag",
 ];
 
 let day = days[now.getDay()];
 
 let months = [
-  "January",
-  "February",
-  "March",
+  "Januar",
+  "Frbruarb",
+  "März",
   "April",
-  "May",
-  "June",
-  "July",
+  "Mai",
+  "Juni",
+  "Juli",
   "August",
   "September",
-  "October",
+  "Oktober",
   "November",
-  "December",
+  "Dezember",
 ];
 
 let month = months[now.getMonth()];
@@ -174,7 +174,7 @@ function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
 
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"];
 
   return days[day];
 }
@@ -196,6 +196,14 @@ function displayForecast(response) {
               <div class="weather-forecast-date">
               ${formatDay(forecastDay.dt)}
               </div>
+               <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max">
+                 ${Math.round(forecastDay.temp.max)} &deg;
+                </span>
+                <span class="weather-forecast-temperature-min">
+                ${Math.round(forecastDay.temp.min)} &deg; 
+                </span>
+              </div>
               <div class="weather-forecast-icon">
               <img src="https://openweathermap.org/img/wn/${
                 forecastDay.weather[0].icon
@@ -204,14 +212,7 @@ function displayForecast(response) {
               <div class="weather-forecast-description">
                 ${forecastDay.weather[0].description}
               </div>
-              <div class="weather-forecast-temperature">
-                <span class="weather-forecast-temperature-max">
-                ${Math.round(forecastDay.temp.max)} &deg;
-                </span>
-                <span class="weather-forecast-temperature-min">
-                ${Math.round(forecastDay.temp.min)} &deg; 
-                </span>
-              </div>
+             
             </div>
          `;
     }
