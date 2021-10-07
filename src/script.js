@@ -22,12 +22,22 @@ console.log("form");
 
 form.addEventListener("submit", searchCity);
 
+// Koordinaten
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "842b36d55cb28eba74a018029d56b04c";
+  let units = `metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${units}`;
+  // console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
+
 // Temperatur für gesuchte Stadt
 
 function showInformation(response) {
   console.log(response.data);
   console.log(response.data.main.temp); // exakte Temperatur
-  console.log(response.data.coord);
+  console.log(response.data.coord); //Koordinaten
   console.log(response.data.main.humidity); //Luftfeuchtigkeit
   console.log(response.data.wind.speed); //Windgeschwindigkeit
   console.log(response.data.name); //gesuchter Ort
@@ -57,6 +67,8 @@ function showInformation(response) {
     "src",
     `https://openweathermap.org/img/wn/${newicon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 // get current Location and show information
@@ -165,7 +177,8 @@ console.log(weathericon);
 
 //inject weather-forecast element
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -199,7 +212,7 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-// // Forecast
+// Forecast
 
 // let cityname = "Wuppertal";
 
@@ -210,16 +223,4 @@ function displayForecast() {
 // let apiForcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}`;
 // axios.get(`${apiForcastURL}&appid=${apiKey}`).then(showForcast);
 
-displayForecast(); //call the function
-
-//Koordinaten
-
-// function getForecast(coordinates) {
-//   console.log(coordinates);
-
-//   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={apiKey}&units=metric`;
-
-//   axios.get(apiUrl).then(displayForecast);
-// }
-
-// getForecast(response.data.coord);
+// displayForecast(); //call the function
