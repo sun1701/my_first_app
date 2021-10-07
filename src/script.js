@@ -91,11 +91,6 @@ function getCurrentTemp(position) {
 let current = document.querySelector("#current-location-button");
 current.addEventListener("click", currentLocation);
 
-// function showTemperature(response) {
-//   let currentlocation = document.querySelector("#city");
-//   currentlocation.innerHTML = `${response.data.name}`;
-// }
-
 // datum und UHrzeit
 let now = new Date();
 let li = document.querySelector("#date");
@@ -201,9 +196,11 @@ function displayForecast(response) {
               <div class="weather-forecast-date">
               ${formatDay(forecastDay.dt)}
               </div>
+              <div class="weather-forecast-icon">
               <img src="https://openweathermap.org/img/wn/${
                 forecastDay.weather[0].icon
               }@2x.png" width="100%">
+              </div>
               <div class="weather-forecast-description">
                 ${forecastDay.weather[0].description}
               </div>
@@ -225,15 +222,4 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-// Forecast
-
-// let cityname = "Wuppertal";
-
-// function showForcast(response) {
-//   console.log(response.data);
-// }
-
-// let apiForcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}`;
-// axios.get(`${apiForcastURL}&appid=${apiKey}`).then(showForcast);
-
-// displayForecast(); //call the function
+// Images from Pexels
