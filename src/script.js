@@ -72,7 +72,8 @@ function getCurrentTemp(position) {
   let lat = position.coords.latitude;
   let units = `metric`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(showInformation);
+
+  https: axios.get(apiUrl).then(showInformation);
 }
 
 let current = document.querySelector("#current-location-button");
@@ -162,13 +163,63 @@ let celsiusTemperature = null;
 let weathericon = document.querySelector("#icon-container");
 console.log(weathericon);
 
-// Forecast
+//inject weather-forecast element
 
-let cityname = "Wuppertal";
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
 
-function showForcast(response) {
-  console.log(response.data);
+  let forecastHTML = `<div class="row">`;
+  let days = ["Do", "Fr", "Sa", "So", "Mo", "Di"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+     <div class="col-2">
+              <div class="weather-forecast-date">
+              ${day}
+              </div>
+              <img src="images/undraw_sunlight_tn7t.svg" alt="" width="100%">
+              <div class="weather-forecast-description">
+                description
+              </div>
+              <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max">
+                18 &deg;
+                </span>
+                <span class="weather-forecast-temperature-min">
+                12 &deg; 
+                </span>
+              </div>
+            </div>
+         `;
+    forecastElement.innerHTML = forecastHTML;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
-let apiForcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}`;
-axios.get(`${apiForcastURL}&appid=${apiKey}`).then(showForcast);
+// // Forecast
+
+// let cityname = "Wuppertal";
+
+// function showForcast(response) {
+//   console.log(response.data);
+// }
+
+// let apiForcastURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityname}`;
+// axios.get(`${apiForcastURL}&appid=${apiKey}`).then(showForcast);
+
+displayForecast(); //call the function
+
+//Koordinaten
+
+// function getForecast(coordinates) {
+//   console.log(coordinates);
+
+//   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid={apiKey}&units=metric`;
+
+//   axios.get(apiUrl).then(displayForecast);
+// }
+
+// getForecast(response.data.coord);

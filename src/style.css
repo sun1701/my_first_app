@@ -1,5 +1,5 @@
 body {
-  background-image: url(images/Fitz\ -\ Fresh\ Air\ Workout.png);
+  background-image: url(../images/Fritz.png);
   background-position: center;
   background-repeat: no-repeat;
   background-position: right;
@@ -116,6 +116,12 @@ a:visited {
 
 .weather-forecast-date {
   color: #2e3852;
+}
+
+.weather-forecast-description {
+  margin: 10px;
+  color: rgb(80, 83, 87);
+  font-size: 00.8rem;
 }
 
 .weather-forecast-temperature {
