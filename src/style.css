@@ -25,12 +25,14 @@ body {
 .weather-forecast-icon {
   border-radius: 10px;
   background: #7cb4ff;
+  box-shadow: 3px 2px 2px #494b4e;
 }
 
 .icon-container {
   text-align: center;
-  border-radius: 10px;
+  border-radius: 50px;
   background: #7cb4ff;
+  box-shadow: inset 5em 3em #bedaff;
 }
 
 footer {
