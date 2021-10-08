@@ -1,8 +1,11 @@
 body {
-  /* background-image: url(../images/Fritz.png); */
-  background-position: center;
+  background-image: url(../images/Weather_app.svg);
+  background-size: 15%;
+  background-attachment: fixed;
+  background-position: 20% 85%;
+  /* background-position: center; */
   background-repeat: no-repeat;
-  background-position: right;
+  /* background-position: right; */
   font-family: Roboto Condensed, sans-serif;
   background-color: #bedaff;
 }
