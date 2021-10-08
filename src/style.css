@@ -40,7 +40,7 @@ body {
 
 footer {
   text-align: right;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
 }
 
 h1,
@@ -55,7 +55,7 @@ li {
   list-style: none;
   padding: 5px;
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: bold;
 }
 
@@ -64,7 +64,7 @@ ul {
 }
 
 a {
-  color: lightslategrey;
+  color: rgb(42, 51, 61);
 }
 
 /* a:hover{
@@ -72,7 +72,7 @@ a {
       } */
 
 a:visited {
-  color: darkgrey;
+  color: rgba(26, 33, 41, 0.1);
 }
 
 /* clearfix {
@@ -157,4 +157,8 @@ a:visited {
   margin-top: 5px;
   color: rgb(80, 83, 87);
   font-size: 1 rem;
+}
+
+.me {
+  color: rgba(41, 92, 25, 0.5);
 }
