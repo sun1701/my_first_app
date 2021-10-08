@@ -40,7 +40,7 @@ body {
 
 footer {
   text-align: right;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 h1,
@@ -157,8 +157,4 @@ a:visited {
   margin-top: 5px;
   color: rgb(80, 83, 87);
   font-size: 1 rem;
-}
-
-.me {
-  color: rgba(41, 92, 25, 0.5);
 }
